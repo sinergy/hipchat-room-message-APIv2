@@ -3,6 +3,7 @@
 # Perl script to send a notification to hipchat using either the REST API v1 or v2.
 #
 # Created by Chris Tobey.
+# Modified by Cloud Chen.
 #
 
 use warnings;
@@ -201,6 +202,9 @@ $ua = LWP::UserAgent->new;
 
 #Set the default timeout.
 $ua->timeout(10);
+
+#Set SSL options
+$ua->ssl_opts(verify_hostname=>0);
 
 #Set the proxy if it was specified.
 if ($optionProxy ne "")
